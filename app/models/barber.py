@@ -12,8 +12,9 @@ class Barber(Base):
     bio = Column(String, nullable=True)
     experience_years = Column(Integer, nullable=True)
     telegram_id = Column(BigInteger, unique=True, index=True, nullable=True) # Optional: Link to Telegram user
+    subscription_status = Column(String, default="inactive", nullable=False) # e.g., 'active', 'inactive', 'past_due'
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     def __repr__(self):
-        return f"<Barber(id={self.id}, name='{self.name}', nickname='{self.nickname}')>"
+        return f"<Barber(id={self.id}, name='{self.name}', status='{self.subscription_status}')>"

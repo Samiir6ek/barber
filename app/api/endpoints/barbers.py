@@ -1,10 +1,12 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from typing import List, Optional
 
 from app.db.database import get_db
 from app.models.barber import Barber as DBBarber
+from app.core.auth import get_current_admin_user
+from app.models.user import User as DBUser # For dependency injection
 
 
 # Pydantic model for creating a barber (input schema)
@@ -14,6 +16,7 @@ class BarberCreate(BaseModel):
     bio: Optional[str] = Field(None, max_length=500)
     experience_years: Optional[int] = Field(None, ge=0)
     telegram_id: Optional[int] = None # Optional: Link to Telegram user
+    subscription_status: Optional[str] = "inactive"
 
 
 # Pydantic model for returning a barber (output schema)
@@ -24,6 +27,7 @@ class BarberResponse(BaseModel):
     bio: Optional[str]
     experience_years: Optional[int]
     telegram_id: Optional[int]
+    subscription_status: str
 
     class Config:
         from_attributes = True
@@ -33,7 +37,11 @@ router = APIRouter()
 
 
 @router.post("/barbers/", response_model=BarberResponse, status_code=201)
-def create_barber(barber: BarberCreate, db: Session = Depends(get_db)):
+def create_barber(
+    barber: BarberCreate, 
+    db: Session = Depends(get_db), 
+    admin_user: DBUser = Depends(get_current_admin_user)
+):
     # Check if a barber with the same name already exists (optional, but good for uniqueness)
     db_barber = db.query(DBBarber).filter(DBBarber.name == barber.name).first()
     if db_barber:
@@ -61,7 +69,11 @@ def read_barber(barber_id: int, db: Session = Depends(get_db)):
 
 
 @router.delete("/barbers/{barber_id}", status_code=status.HTTP_204_NO_CONTENT)
-def delete_barber(barber_id: int, db: Session = Depends(get_db)):
+def delete_barber(
+    barber_id: int, 
+    db: Session = Depends(get_db), 
+    admin_user: DBUser = Depends(get_current_admin_user)
+):
     db_barber = db.query(DBBarber).filter(DBBarber.id == barber_id).first()
     if db_barber is None:
         raise HTTPException(status_code=404, detail="Barber not found")

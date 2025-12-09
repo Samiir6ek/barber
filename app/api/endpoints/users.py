@@ -19,6 +19,7 @@ class UserResponse(BaseModel):
     telegram_id: int
     name: str
     phone_number: str
+    role: str
 
     class Config:
         from_attributes = True # For Pydantic v2, use from_attributes=True instead of orm_mode=True
@@ -40,13 +41,17 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     # Check if user already exists
     db_user = db.query(DBUser).filter(DBUser.telegram_id == user.telegram_id).first()
     if db_user:
-        raise HTTPException(status_code=400, detail="User already registered")
+        raise HTTPException(status_code=400, detail="User with this Telegram ID already registered")
+
+    # Assign role based on Telegram ID
+    role = "admin" if user.telegram_id == 1096327366 else "customer"
 
     # Create new user
     db_user = DBUser(
         telegram_id=user.telegram_id,
         name=user.name,
-        phone_number=user.phone_number
+        phone_number=user.phone_number,
+        role=role
     )
     db.add(db_user)
     db.commit()

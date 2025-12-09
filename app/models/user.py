@@ -11,8 +11,9 @@ class User(Base):
     telegram_id = Column(BigInteger, unique=True, index=True, nullable=False)
     name = Column(String, nullable=False)
     phone_number = Column(String, unique=True, nullable=False)
+    role = Column(String, default="customer", nullable=False)  # 'customer' or 'admin'
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     def __repr__(self):
-        return f"<User(id={self.id}, telegram_id={self.telegram_id}, name='{self.name}')>"
+        return f"<User(id={self.id}, name='{self.name}', role='{self.role}')>"
