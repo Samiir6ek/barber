@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE / Editor
+.idea/
+.vscode/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# Temporary files
+ngrok
+ngrok.zip
+*.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
