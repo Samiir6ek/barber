@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@types/react-calendar": "^3.9.0",
-    "axios": "^1.13.2",
-    "react-calendar": "^6.0.0"
-  }
-}
