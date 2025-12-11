@@ -16,7 +16,7 @@ interface Props {
 const BarberSelection: React.FC<Props> = ({ barbers, onViewProfile }) => {
   return (
     <div className="selection-container">
-      <h2>Step 2: Choose a Barber</h2>
+      <h2>2-qadam: Sartaroshni tanlang</h2>
       <div className="card-grid">
         {barbers.map(barber => (
           <div key={barber.id} className="barber-card" onClick={() => onViewProfile(barber)}>

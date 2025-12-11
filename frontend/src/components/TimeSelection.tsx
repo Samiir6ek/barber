@@ -45,7 +45,7 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
 
   return (
     <div className="selection-container">
-      <h2>Step 3: Choose a Date & Time</h2>
+      <h2>3-qadam: Sana va vaqtni tanlang</h2>
       <div className="time-selection-layout">
         <div className="calendar-container">
           <Calendar
@@ -55,7 +55,7 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
           />
         </div>
         <div className="time-slots-container">
-          <h3>Available Times for {date instanceof Date ? date.toLocaleDateString() : ''}</h3>
+          <h3>{date instanceof Date ? date.toLocaleDateString() : ''} uchun mavjud vaqtlar</h3>
           <ul className="time-slots-list">
             {mockTimeSlots.map((slot) => (
               <li key={slot.time}>
@@ -65,7 +65,7 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
                   disabled={slot.status === 'Booked'}
                 >
                   <span className="time-slot-time">{slot.time}</span>
-                  <span className="time-slot-status">{slot.status}</span>
+                  <span className="time-slot-status">{slot.status === 'Open' ? 'Ochiq' : 'Band'}</span>
                 </button>
               </li>
             ))}

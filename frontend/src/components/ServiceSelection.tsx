@@ -14,12 +14,12 @@ interface Props {
 const ServiceSelection: React.FC<Props> = ({ services, onSelect }) => {
   return (
     <div className="selection-container">
-      <h2>Step 1: Choose a Service</h2>
+      <h2>1-qadam: Xizmatni tanlang</h2>
       <div className="card-grid">
         {services.map(service => (
           <div key={service.id} className="card" onClick={() => onSelect(service)}>
             <h3>{service.name}</h3>
-            <p>{service.duration_minutes} minutes</p>
+            <p>{service.duration_minutes} daqiqa</p>
           </div>
         ))}
       </div>

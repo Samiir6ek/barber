@@ -48,14 +48,14 @@ function App() {
     // In a real app, we'd fetch services and barbers from our API
     // For now, we'll use mock data to build the UI
     const mockServices: Service[] = [
-      { id: 1, name: 'Standard Cut', duration_minutes: 30 },
-      { id: 2, name: 'Beard Trim', duration_minutes: 30 },
-      { id: 3, name: 'Full Service', duration_minutes: 60 },
+      { id: 1, name: 'Standart soch kesish', duration_minutes: 30 },
+      { id: 2, name: 'Soqol olish', duration_minutes: 30 },
+      { id: 3, name: 'Toʻliq xizmat', duration_minutes: 60 },
     ];
     const mockBarbers: Barber[] = [
-      { id: 1, name: 'Alex', nickname: 'The Precisionist', bio: 'Loves clean lines and sharp fades.', image_url: '/src/assets/images/barber_or_best.jpg' },
-      { id: 2, name: 'John', nickname: 'The Classic', bio: 'Specializes in classic cuts and traditional styles.', image_url: '/src/assets/images/barber_or_best.jpg' },
-      { id: 3, name: 'Mike', nickname: 'The Trendsetter', bio: 'Always up to date with the latest styles.', image_url: '/src/assets/images/barber_or_best.jpg' },
+      { id: 1, name: 'Aleksandr', nickname: 'Aniqchi', bio: 'Toza chiziqlar va oʻtkir oʻtishlarni yaxshi koʻradi.', image_url: '/src/assets/images/barber.jpg' },
+      { id: 2, name: 'Javohir', nickname: 'Klassik', bio: 'Klassik soch turmagi va anʼanaviy uslublarga ixtisoslashgan.', image_url: '/src/assets/images/barber.jpg' },
+      { id: 3, name: 'Mayk', nickname: 'Trendsetter', bio: 'Har doim eng soʻnggi uslublardan xabardor.', image_url: '/src/assets/images/barber.jpg' },
     ];
     setServices(mockServices);
     setBarbers(mockBarbers);
@@ -121,8 +121,8 @@ function App() {
             &larr; Back
           </button>
         )}
-        <h1>Book Your Appointment</h1>
-        <p>Step {step} of 6</p> {/* Updated total steps */}
+        <h1>Uchrashuvni bron qilish</h1>
+        <p>{step} / 6 qadam</p> {/* Updated total steps */}
       </header>
       <main>
         {renderStep()}

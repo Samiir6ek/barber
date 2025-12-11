@@ -24,15 +24,15 @@ interface Props {
 const Confirmation: React.FC<Props> = ({ service, barber, date, time, onConfirm }) => {
   return (
     <div className="selection-container">
-      <h2>Step 4: Confirm Your Booking</h2>
+      <h2>4-qadam: Bronni tasdiqlang</h2>
       <div className="confirmation-details">
-        <p><strong>Service:</strong> {service?.name}</p>
-        <p><strong>Barber:</strong> {barber?.name}</p>
-        <p><strong>Date:</strong> {date?.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-        <p><strong>Time:</strong> {time}</p>
+        <p><strong>Xizmat:</strong> {service?.name}</p>
+        <p><strong>Sartarosh:</strong> {barber?.name}</p>
+        <p><strong>Sana:</strong> {date?.toLocaleDateString('uz-UZ', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p><strong>Vaqt:</strong> {time}</p>
       </div>
       <button className="confirm-button" onClick={onConfirm}>
-        Confirm & Book
+        Tasdiqlash va bron qilish
       </button>
     </div>
   );

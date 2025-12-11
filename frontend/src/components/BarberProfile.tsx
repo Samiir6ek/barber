@@ -16,13 +16,13 @@ interface Props {
 const BarberProfile: React.FC<Props> = ({ barber, onBook }) => {
   return (
     <div className="selection-container">
-      <h2>{barber.name}'s Profile</h2>
+      <h2>{barber.name}ning profili</h2>
       <div className="barber-profile-details">
         <img src={barber.image_url} alt={barber.name} className="barber-profile-image" />
         <h3>{barber.name} <span className="barber-nickname">"{barber.nickname}"</span></h3>
         <p className="barber-bio">{barber.bio}</p>
 
-        <h4>Best Works (Placeholder)</h4>
+        <h4>Eng yaxshi ishlar (Vaqtinchalik)</h4>
         <div className="portfolio-grid">
           {/* Placeholder for 10 "before and after" image pairs */}
           {[...Array(3)].map((_, index) => ( // Show 3 placeholder works
@@ -33,7 +33,7 @@ const BarberProfile: React.FC<Props> = ({ barber, onBook }) => {
           ))}
         </div>
         <button className="confirm-button" onClick={() => onBook(barber)}>
-          Book with {barber.name}
+          {barber.name} bilan bron qilish
         </button>
       </div>
     </div>
