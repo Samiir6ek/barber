@@ -53,9 +53,9 @@ function App() {
       { id: 3, name: 'Toʻliq xizmat', duration_minutes: 60 },
     ];
     const mockBarbers: Barber[] = [
-      { id: 1, name: 'Aleksandr', nickname: 'Aniqchi', bio: 'Toza chiziqlar va oʻtkir oʻtishlarni yaxshi koʻradi.', image_url: '/src/assets/images/barber.jpg' },
-      { id: 2, name: 'Javohir', nickname: 'Klassik', bio: 'Klassik soch turmagi va anʼanaviy uslublarga ixtisoslashgan.', image_url: '/src/assets/images/barber.jpg' },
-      { id: 3, name: 'Mayk', nickname: 'Trendsetter', bio: 'Har doim eng soʻnggi uslublardan xabardor.', image_url: '/src/assets/images/barber.jpg' },
+      { id: 1, name: 'Yahyo', nickname: 'the Pro', bio: 'Toza chiziqlar va oʻtkir oʻtishlarni yaxshi koʻradi.', image_url: '/src/assets/images/barber.jpg' },
+      { id: 2, name: 'Shuhrat', nickname: 'Chill guy', bio: 'Klassik soch turmagi va anʼanaviy uslublarga ixtisoslashgan.', image_url: '/src/assets/images/barber.jpg' },
+      { id: 3, name: 'Odil', nickname: 'Trendchi', bio: 'Har doim eng soʻnggi uslublardan xabardor.', image_url: '/src/assets/images/barber.jpg' },
     ];
     setServices(mockServices);
     setBarbers(mockBarbers);
@@ -118,10 +118,10 @@ function App() {
       <header className="App-header">
         {step > 1 && (
           <button className="back-button" onClick={() => setStep(step - 1)}>
-            &larr; orqaga
+            <img src="/src/assets/images/arrow.png" alt="orqaga" />
           </button>
         )}
-        <h1>Uchrashuvni bron qilish</h1>
+        <h1>Uchrashuv belgilash</h1>
         <p>{step} / 6 qadam</p> {/* Updated total steps */}
       </header>
       <main>

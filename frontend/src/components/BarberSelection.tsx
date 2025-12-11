@@ -23,7 +23,6 @@ const BarberSelection: React.FC<Props> = ({ barbers, onViewProfile }) => {
             <img src={barber.image_url} alt={barber.name} className="barber-image" />
             <h3>{barber.name}</h3>
             <p className="barber-nickname"><em>"{barber.nickname}"</em></p>
-            <p className="barber-bio-short">{barber.bio.substring(0, 50)}...</p> {/* Short bio preview */}
           </div>
         ))}
       </div>

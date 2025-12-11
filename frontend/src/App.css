@@ -49,7 +49,7 @@ body {
 }
 
 .App-header h1 {
-  margin: 0;
+  margin: 10px 0 0; /* Add margin to move the title down */
   font-size: 1.8em;
   color: #D2C1B6; /* Highlight color for title */
 }
@@ -74,22 +74,15 @@ main {
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(145deg, #456882, #1B3C53); /* Gradient background */
-  border: 1px solid #8FABD4;
-  color: #EFECE3;
-  padding: 8px 15px;
-  font-size: 0.9em;
-  border-radius: 20px; /* Rounder */
+  background: transparent;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.back-button:hover {
-  background: linear-gradient(145deg, #1B3C53, #456882); /* Reverse gradient on hover */
-  border-color: #D2C1B6;
-  color: #D2C1B6;
-  transform: translateY(-50%) scale(1.05);
+.back-button img {
+  width: 24px;
+  height: 24px;
 }
 
 .selection-container {
