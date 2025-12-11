@@ -111,6 +111,7 @@ main {
   background-color: #1B3C53; /* Match app background */
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid #D2C1B6; /* Cream border */
 }
 
 .selection-container h2 {
@@ -251,7 +252,7 @@ main {
   align-items: center;
   text-align: center;
   background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
-  border: 1px solid #456882;
+  border: 1px solid #D2C1B6; /* Cream border */
   border-radius: 15px;
   padding: 20px;
   padding-bottom: 40px; /* Increased bottom padding */

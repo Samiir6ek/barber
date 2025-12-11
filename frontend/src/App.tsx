@@ -108,7 +108,7 @@ function App() {
   const handleTimeSelect = (date: Date, time: string) => {
     setSelectedDate(date);
     setSelectedTime(time);
-    setStep(5);
+    setStep(5); // Changed to step 5 for confirmation
   };
 
   const handleConfirm = () => {

@@ -24,7 +24,7 @@ interface Props {
 const Confirmation: React.FC<Props> = ({ service, barber, date, time, onConfirm }) => {
   return (
     <div className="selection-container">
-      <h2>4-qadam: Bronni tasdiqlang</h2>
+      <h2>5-qadam: Band qilishni tasdiqlang</h2>
       <div className="confirmation-details">
         <p><strong>Xizmat:</strong> {service?.name}</p>
         <p><strong>Sartarosh:</strong> {barber?.name}</p>
