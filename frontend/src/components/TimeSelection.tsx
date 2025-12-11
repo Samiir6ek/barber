@@ -41,7 +41,7 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
 
   const handleConfirmTime = () => {
     if (date instanceof Date && selectedTime) {
-      onSelect(date, selectedTime.value);
+      onSelect(date, String(selectedTime.value));
     }
   };
 
