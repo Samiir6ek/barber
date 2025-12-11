@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #EFECE3; /* Default text color from new palette */
-  background-color: #000000; /* Main background from new palette */
+  background-color: #1B3C53; /* Main background from new palette */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,7 +19,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000000; /* Main background from new palette */
+  background-color: #1B3C53; /* Main background from new palette */
 }
 
 #root {
@@ -35,23 +35,23 @@ body {
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  background-color: #000000; /* Main background */
+  background-color: #1B3C53; /* Main background */
   color: #EFECE3; /* Default text color */
 }
 
 .App-header {
-  background-color: #000000; /* Dark header background */
+  background-color: #1B3C53; /* Dark header background */
   padding: 20px;
   color: #EFECE3;
   text-align: center;
   position: relative;
-  border-bottom: 1px solid #4A70A9; /* Main color for edges */
+  border-bottom: 1px solid #456882; /* Main color for edges */
 }
 
 .App-header h1 {
   margin: 0;
   font-size: 1.8em;
-  color: #8FABD4; /* Highlight color for title */
+  color: #D2C1B6; /* Highlight color for title */
 }
 
 .App-header p {
@@ -74,7 +74,7 @@ main {
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(145deg, #4A70A9, #000000); /* Gradient background */
+  background: linear-gradient(145deg, #456882, #1B3C53); /* Gradient background */
   border: 1px solid #8FABD4;
   color: #EFECE3;
   padding: 8px 15px;
@@ -86,9 +86,9 @@ main {
 }
 
 .back-button:hover {
-  background: linear-gradient(145deg, #000000, #4A70A9); /* Reverse gradient on hover */
-  border-color: #8FABD4;
-  color: #8FABD4;
+  background: linear-gradient(145deg, #1B3C53, #456882); /* Reverse gradient on hover */
+  border-color: #D2C1B6;
+  color: #D2C1B6;
   transform: translateY(-50%) scale(1.05);
 }
 
@@ -100,13 +100,13 @@ main {
   width: 100%;
   max-width: 900px; /* Wider container */
   padding: 20px;
-  background-color: #000000; /* Match app background */
+  background-color: #1B3C53; /* Match app background */
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .selection-container h2 {
-  color: #8FABD4;
+  color: #D2C1B6;
   font-size: 1.8em;
   margin-bottom: 15px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
@@ -124,8 +124,8 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(145deg, #000000, #4A70A9); /* Gradient background */
-  border: 1px solid #4A70A9;
+  background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
+  border: 1px solid #456882;
   border-radius: 15px; /* Rounder */
   padding: 20px;
   cursor: pointer;
@@ -135,14 +135,14 @@ main {
 }
 
 .card:hover {
-  border-color: #8FABD4; /* Highlight color on hover */
+  border-color: #D2C1B6; /* Highlight color on hover */
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .card h3 {
   margin-top: 10px;
-  color: #8FABD4;
+  color: #D2C1B6;
   font-size: 1.2em;
 }
 
@@ -156,8 +156,8 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(145deg, #000000, #4A70A9); /* Gradient background */
-  border: 1px solid #4A70A9; /* Border from palette */
+  background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
+  border: 1px solid #456882; /* Border from palette */
   border-radius: 15px; /* More rounded */
   padding: 15px;
   cursor: pointer;
@@ -166,7 +166,7 @@ main {
 }
 
 .barber-card:hover {
-  border-color: #8FABD4; /* Highlight color on hover */
+  border-color: #D2C1B6; /* Highlight color on hover */
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
@@ -199,8 +199,8 @@ main {
 }
 
 .confirmation-details {
-  background-color: #000000;
-  border: 1px solid #4A70A9;
+  background-color: #1B3C53;
+  border: 1px solid #456882;
   border-radius: 15px;
   padding: 20px;
   text-align: left;
@@ -215,12 +215,12 @@ main {
 }
 
 .confirmation-details strong {
-  color: #8FABD4;
+  color: #D2C1B6;
 }
 
 .confirm-button {
-  background: linear-gradient(145deg, #8FABD4, #4A70A9); /* Gradient for confirm button */
-  color: #000000; /* Dark text on light button */
+  background: linear-gradient(145deg, #D2C1B6, #EFECE3); /* Gradient for confirm button */
+  color: #1B3C53; /* Dark text on light button */
   font-size: 1.2em;
   padding: 15px 30px;
   border-radius: 25px; /* Very rounded */
@@ -231,7 +231,7 @@ main {
 }
 
 .confirm-button:hover {
-  background: linear-gradient(145deg, #4A70A9, #8FABD4); /* Reverse gradient on hover */
+  background: linear-gradient(145deg, #EFECE3, #D2C1B6); /* Reverse gradient on hover */
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
@@ -242,8 +242,8 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(145deg, #000000, #4A70A9); /* Gradient background */
-  border: 1px solid #4A70A9;
+  background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
+  border: 1px solid #456882;
   border-radius: 15px;
   padding: 20px;
   max-width: 700px; /* Wider profile */
@@ -257,12 +257,12 @@ main {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
-  border: 4px solid #8FABD4;
-  box-shadow: 0 0 10px rgba(143, 171, 212, 0.5); /* Glow effect */
+  border: 4px solid #D2C1B6;
+  box-shadow: 0 0 10px rgba(210, 193, 182, 0.5); /* Glow effect */
 }
 
 .barber-profile-details h3 {
-  color: #8FABD4;
+  color: #D2C1B6;
   font-size: 2em;
   margin-bottom: 5px;
 }
@@ -282,7 +282,7 @@ main {
 }
 
 h4 {
-  color: #8FABD4;
+  color: #D2C1B6;
   margin-top: 30px;
   font-size: 1.5em;
 }
@@ -299,8 +299,8 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background-color: #000000;
-  border: 1px solid #4A70A9;
+  background-color: #1B3C53;
+  border: 1px solid #456882;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -311,7 +311,7 @@ h4 {
   height: 120px; /* Fixed height for portfolio images */
   object-fit: cover;
   display: block;
-  border-bottom: 1px solid #4A70A9;
+  border-bottom: 1px solid #456882;
 }
 
 .portfolio-item:last-child .portfolio-image {
@@ -356,8 +356,8 @@ h4 {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background: linear-gradient(145deg, #000000, #4A70A9); /* Gradient background */
-  border: 1px solid #4A70A9;
+  background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
+  border: 1px solid #456882;
   color: #EFECE3;
   padding: 12px 15px;
   border-radius: 10px; /* Rounder buttons */
@@ -368,23 +368,23 @@ h4 {
 }
 
 .time-slot-button.open:hover {
-  border-color: #8FABD4; /* Highlight color on hover */
-  background: linear-gradient(145deg, #4A70A9, #000000); /* Reverse gradient on hover */
+  border-color: #D2C1B6; /* Highlight color on hover */
+  background: linear-gradient(145deg, #456882, #1B3C53); /* Reverse gradient on hover */
 }
 
 .time-slot-button.booked {
-  background-color: #000000; /* Muted background for booked */
+  background-color: #1B3C53; /* Muted background for booked */
   color: #EFECE3;
   cursor: not-allowed;
   opacity: 0.6;
-  border-color: #4A70A9;
+  border-color: #456882;
   box-shadow: none;
 }
 
 .time-slot-button.selected {
-  background: linear-gradient(145deg, #8FABD4, #EFECE3); /* Selected color gradient */
-  border-color: #8FABD4;
-  color: #000000; /* Dark text on light button */
+  background: linear-gradient(145deg, #D2C1B6, #EFECE3); /* Selected color gradient */
+  border-color: #D2C1B6;
+  color: #1B3C53; /* Dark text on light button */
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
 }
 
@@ -399,20 +399,20 @@ h4 {
 }
 
 .time-slot-button.open .time-slot-status {
-  background-color: #8FABD4;
-  color: #000000;
+  background-color: #D2C1B6;
+  color: #1B3C53;
 }
 
 .time-slot-button.booked .time-slot-status {
   background-color: #EFECE3;
-  color: #000000;
+  color: #1B3C53;
 }
 
 /* react-calendar overrides */
 .react-calendar {
   width: 100%;
-  border: 1px solid #4A70A9; /* Border from palette */
-  background: #000000; /* Darker background */
+  border: 1px solid #456882; /* Border from palette */
+  background: #1B3C53; /* Darker background */
   border-radius: 15px; /* Rounder */
   font-family: inherit;
   color: #EFECE3; /* Lighter text */
@@ -429,7 +429,7 @@ h4 {
 
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  background-color: #4A70A9;
+  background-color: #456882;
   border-radius: 8px;
 }
 
@@ -447,24 +447,24 @@ h4 {
 }
 
 .react-calendar__tile--now {
-  background: #4A70A9; /* Current day highlight */
+  background: #456882; /* Current day highlight */
   color: #EFECE3;
 }
 
 .react-calendar__tile--active {
-  background: #8FABD4; /* Selected day */
-  color: #000000;
+  background: #D2C1B6; /* Selected day */
+  color: #1B3C53;
 }
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #4A70A9;
+  background-color: #456882;
   border-radius: 8px;
 }
 
 .react-calendar__tile--range {
-  background: #8FABD4;
-  color: #000000;
+  background: #D2C1B6;
+  color: #1B3C53;
   border-radius: 0;
 }
 
@@ -475,10 +475,45 @@ h4 {
 
 .react-calendar__tile--hasActive:enabled:hover,
 .react-calendar__tile--hasActive:enabled:focus {
-  background: #8FABD4;
+  background: #D2C1B6;
 }
 
 .react-calendar__tile--disabled {
   color: #EFECE3;
   opacity: 0.5;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .App-header h1 {
+    font-size: 1.5em;
+  }
+
+  .back-button {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+
+  .selection-container {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 15px;
+  }
+
+  .time-selection-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .calendar-container, .time-slots-container {
+    max-width: 100%;
+  }
 }

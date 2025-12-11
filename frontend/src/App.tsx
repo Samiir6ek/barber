@@ -118,7 +118,7 @@ function App() {
       <header className="App-header">
         {step > 1 && (
           <button className="back-button" onClick={() => setStep(step - 1)}>
-            &larr; Back
+            &larr; orqaga
           </button>
         )}
         <h1>Uchrashuvni bron qilish</h1>

@@ -32,7 +32,7 @@ const Confirmation: React.FC<Props> = ({ service, barber, date, time, onConfirm 
         <p><strong>Vaqt:</strong> {time}</p>
       </div>
       <button className="confirm-button" onClick={onConfirm}>
-        Tasdiqlash va bron qilish
+        Tasdiqlash va band qilish
       </button>
     </div>
   );
