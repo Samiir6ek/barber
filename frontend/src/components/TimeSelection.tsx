@@ -37,10 +37,6 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
     setSelectedTime(firstOpenSlot ? firstOpenSlot.time : '');
   };
 
-  const handleTimeSelect = (time: string) => {
-    setSelectedTime(time);
-  };
-
   const handleConfirmTime = () => {
     if (date instanceof Date && selectedTime) {
       onSelect(date, selectedTime);
