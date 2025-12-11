@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -27,9 +27,9 @@ export interface Barber {
 // We will use an environment variable for the API URL
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
-const api = axios.create({
-  baseURL: API_BASE_URL,
-});
+// const api = axios.create({
+//   baseURL: API_BASE_URL,
+// });
 
 
 // --- Main App Component ---
