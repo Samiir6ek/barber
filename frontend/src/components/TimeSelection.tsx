@@ -35,7 +35,7 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
     setDate(newDate);
   };
 
-  const handleTimeChange = (newTime: { id: string, value: string }) => {
+  const handleTimeChange = (newTime: { id: string, value: string | number }) => {
     setSelectedTime(newTime);
   };
 
