@@ -368,67 +368,132 @@ h4 {
   color: #D2C1B6;
 }
 
-.wheel-picker-container {
-  margin-bottom: 20px;
+.time-slots-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-height: 300px; /* Or any height you prefer */
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #456882;
+  border-radius: 10px;
+}
+
+.time-slot-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
+  border: 1px solid #456882;
+  color: #EFECE3;
+  padding: 12px 15px;
+  border-radius: 10px; /* Rounder buttons */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 1em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.time-slot-button.open:hover {
+  border-color: #D2C1B6; /* Highlight color on hover */
+  background: linear-gradient(145deg, #456882, #1B3C53); /* Reverse gradient on hover */
+}
+
+.time-slot-button.booked {
+  background-color: #1B3C53; /* Muted background for booked */
+  color: #EFECE3;
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-color: #456882;
+  box-shadow: none;
+}
+
+.time-slot-button.selected {
+  background: linear-gradient(145deg, #D2C1B6, #EFECE3); /* Selected color gradient */
+  border-color: #D2C1B6;
+  color: #1B3C53; /* Dark text on light button */
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
+}
+
+.time-slot-time {
+  font-weight: bold;
+}
+
+.time-slot-status {
+  font-size: 0.9em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.time-slot-button.open .time-slot-status {
+  background-color: #D2C1B6;
+  color: #1B3C53;
+}
+
+.time-slot-button.booked .time-slot-status {
+  background-color: #EFECE3;
+  color: #1B3C53;
 }
 
 /* react-calendar overrides */
 .calendar-container .react-calendar {
-  width: 100%;
-  border: 1px solid #456882; /* Border from palette */
-  background: #1B3C53; /* Darker background */
-  border-radius: 15px; /* Rounder */
-  font-family: inherit;
-  color: #EFECE3; /* Lighter text */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100% !important;
+  border: 1px solid #456882 !important;
+  background: #1B3C53 !important;
+  border-radius: 15px !important;
+  font-family: inherit !important;
+  color: #EFECE3 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 .calendar-container .react-calendar__navigation button {
-  color: #EFECE3;
+  color: #EFECE3 !important;
   min-width: 44px;
-  background: none;
+  background: none !important;
   font-size: 1.2em;
   margin-top: 8px;
 }
 
 .calendar-container .react-calendar__navigation button:enabled:hover,
 .calendar-container .react-calendar__navigation button:enabled:focus {
-  background-color: #456882;
+  background-color: #456882 !important;
   border-radius: 8px;
 }
 
 .calendar-container .react-calendar__month-view__weekdays__weekday abbr {
-  text-decoration: none;
-  font-weight: bold;
-  color: #EFECE3;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  color: #EFECE3 !important;
 }
 
 .calendar-container .react-calendar__tile {
   padding: 10px 6.6667px;
-  background: none;
-  color: #EFECE3;
+  background: none !important;
+  color: #EFECE3 !important;
   border-radius: 8px;
 }
 
 .calendar-container .react-calendar__tile--now {
-  background: #456882; /* Current day highlight */
-  color: #EFECE3;
+  background: #456882 !important;
+  color: #EFECE3 !important;
 }
 
 .calendar-container .react-calendar__tile--active {
-  background: #D2C1B6; /* Selected day */
-  color: #1B3C53;
+  background: #D2C1B6 !important;
+  color: #1B3C53 !important;
 }
 
 .calendar-container .react-calendar__tile:enabled:hover,
 .calendar-container .react-calendar__tile:enabled:focus {
-  background-color: #456882;
+  background-color: #456882 !important;
   border-radius: 8px;
 }
 
 .calendar-container .react-calendar__tile--range {
-  background: #D2C1B6;
-  color: #1B3C53;
+  background: #D2C1B6 !important;
+  color: #1B3C53 !important;
   border-radius: 0;
 }
 
@@ -439,11 +504,11 @@ h4 {
 
 .calendar-container .react-calendar__tile--hasActive:enabled:hover,
 .calendar-container .react-calendar__tile--hasActive:enabled:focus {
-  background: #D2C1B6;
+  background: #D2C1B6 !important;
 }
 
 .calendar-container .react-calendar__tile--disabled {
-  color: #EFECE3;
+  color: #EFECE3 !important;
   opacity: 0.5;
 }
 
