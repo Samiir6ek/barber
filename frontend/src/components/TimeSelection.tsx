@@ -29,7 +29,7 @@ const mockTimeSlots = [
 
 const TimeSelection: React.FC<Props> = ({ onSelect }) => {
   const [date, setDate] = useState<CalendarValue>(new Date());
-  const [selectedTime, setSelectedTime] = useState(mockTimeSlots[0]);
+  const [selectedTime, setSelectedTime] = useState<{ id: string, value: string | number }>(mockTimeSlots[0]);
 
   const handleDateChange = (newDate: CalendarValue) => {
     setDate(newDate);
