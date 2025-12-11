@@ -24,16 +24,15 @@ const BarberProfile: React.FC<Props> = ({ barber, onBook }) => {
 
         <h4>Eng yaxshi ishlar (Vaqtinchalik)</h4>
         <div className="portfolio-grid">
-          {/* Placeholder for 10 "before and after" image pairs */}
-          {[...Array(3)].map((_, index) => ( // Show 3 placeholder works
+          {/* Placeholder for 3 best works */}
+          {[...Array(3)].map((_, index) => (
             <div key={index} className="portfolio-item">
-              <img src={barber.image_url} alt="Before" className="portfolio-image" />
-              <img src={barber.image_url} alt="After" className="portfolio-image" />
+              <img src={barber.image_url} alt={`Best work ${index + 1}`} className="portfolio-image" />
             </div>
           ))}
         </div>
         <button className="confirm-button" onClick={() => onBook(barber)}>
-          {barber.name} bilan bron qilish
+          {barber.name} bilan band qilish
         </button>
       </div>
     </div>
