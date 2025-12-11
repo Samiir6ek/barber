@@ -28,24 +28,28 @@ const mockTimeSlots = [
 
 const TimeSelection: React.FC<Props> = ({ onSelect }) => {
   const [date, setDate] = useState<CalendarValue>(new Date());
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string>(mockTimeSlots[0].time); // Default to the first open time
 
   const handleDateChange = (newDate: CalendarValue) => {
     setDate(newDate);
-    setSelectedTime(null); // Reset time selection when date changes
+    // Reset time selection when date changes, find first available
+    const firstOpenSlot = mockTimeSlots.find(slot => slot.status === 'Open');
+    setSelectedTime(firstOpenSlot ? firstOpenSlot.time : '');
   };
 
   const handleTimeSelect = (time: string) => {
     setSelectedTime(time);
-    // We have both date and time, so we can proceed
-    if (date instanceof Date) {
-      onSelect(date, time);
+  };
+
+  const handleConfirmTime = () => {
+    if (date instanceof Date && selectedTime) {
+      onSelect(date, selectedTime);
     }
   };
 
   return (
     <div className="selection-container">
-      <h2>3-qadam: Sana va vaqtni tanlang</h2>
+      <h2>4-qadam: Sana va vaqtni tanlang</h2>
       <div className="time-selection-layout">
         <div className="calendar-container">
           <Calendar
@@ -55,21 +59,23 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
           />
         </div>
         <div className="time-slots-container">
-          <h3>{date instanceof Date ? date.toLocaleDateString() : ''} uchun mavjud vaqtlar</h3>
-          <ul className="time-slots-list">
-            {mockTimeSlots.map((slot) => (
-              <li key={slot.time}>
-                <button
-                  className={`time-slot-button ${slot.status === 'Booked' ? 'booked' : 'open'} ${selectedTime === slot.time ? 'selected' : ''}`}
-                  onClick={() => slot.status === 'Open' && handleTimeSelect(slot.time)}
-                  disabled={slot.status === 'Booked'}
+          <h3>Mavjud vaqtlar</h3>
+          <div className="roller-container">
+            <div className="roller-selection-indicator"></div>
+            <ul className="roller">
+              {mockTimeSlots.map((slot) => (
+                <li
+                  key={slot.time}
+                  className={`roller-item ${slot.status === 'Booked' ? 'booked' : ''}`}
                 >
-                  <span className="time-slot-time">{slot.time}</span>
-                  <span className="time-slot-status">{slot.status === 'Open' ? 'Ochiq' : 'Band'}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
+                  {slot.time}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <button className="confirm-button" onClick={handleConfirmTime} disabled={!selectedTime}>
+            Tanlash
+          </button>
         </div>
       </div>
     </div>

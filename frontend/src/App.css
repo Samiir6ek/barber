@@ -359,76 +359,57 @@ h4 {
   flex: 1;
   min-width: 300px;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.time-slots-list {
+.time-slots-container h3 {
+  color: #D2C1B6;
+}
+
+.roller-container {
+  position: relative;
+  height: 150px; /* Height for 3 visible items */
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  border: 1px solid #456882;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.roller-selection-indicator {
+  position: absolute;
+  top: 50px; /* Position in the middle */
+  left: 0;
+  right: 0;
+  height: 50px; /* Height of one item */
+  background-color: rgba(143, 171, 212, 0.2); /* #8FABD4 with alpha */
+  border-top: 1px solid #8FABD4;
+  border-bottom: 1px solid #8FABD4;
+  pointer-events: none; /* Allows clicking through */
+}
+
+.roller {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
-.time-slots-list li {
-  width: 100%;
-}
-
-.time-slot-button {
+.roller-item {
+  height: 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  background: linear-gradient(145deg, #1B3C53, #456882); /* Gradient background */
-  border: 1px solid #456882;
+  justify-content: center;
+  font-size: 1.5em;
   color: #EFECE3;
-  padding: 12px 15px;
-  border-radius: 10px; /* Rounder buttons */
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  font-size: 1em;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  scroll-snap-align: center;
 }
 
-.time-slot-button.open:hover {
-  border-color: #D2C1B6; /* Highlight color on hover */
-  background: linear-gradient(145deg, #456882, #1B3C53); /* Reverse gradient on hover */
-}
-
-.time-slot-button.booked {
-  background-color: #1B3C53; /* Muted background for booked */
-  color: #EFECE3;
-  cursor: not-allowed;
-  opacity: 0.6;
-  border-color: #456882;
-  box-shadow: none;
-}
-
-.time-slot-button.selected {
-  background: linear-gradient(145deg, #D2C1B6, #EFECE3); /* Selected color gradient */
-  border-color: #D2C1B6;
-  color: #1B3C53; /* Dark text on light button */
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.4);
-}
-
-.time-slot-time {
-  font-weight: bold;
-}
-
-.time-slot-status {
-  font-size: 0.9em;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.time-slot-button.open .time-slot-status {
-  background-color: #D2C1B6;
-  color: #1B3C53;
-}
-
-.time-slot-button.booked .time-slot-status {
-  background-color: #EFECE3;
-  color: #1B3C53;
+.roller-item.booked {
+  color: #456882;
+  text-decoration: line-through;
 }
 
 /* react-calendar overrides */
