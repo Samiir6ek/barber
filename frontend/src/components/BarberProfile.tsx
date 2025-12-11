@@ -1,4 +1,5 @@
 import React from 'react';
+import workImage from '/src/assets/images/work.jpg'; // Import the work image
 
 interface Barber {
   id: number;
@@ -14,6 +15,9 @@ interface Props {
 }
 
 const BarberProfile: React.FC<Props> = ({ barber, onBook }) => {
+  const works = [1, 2, 3]; // 3 best works
+  const angles = [1, 2, 3]; // 3 angles per work
+
   return (
     <div className="selection-container">
       <h2>{barber.name}ning profili</h2>
@@ -22,12 +26,17 @@ const BarberProfile: React.FC<Props> = ({ barber, onBook }) => {
         <h3>{barber.name} <span className="barber-nickname">"{barber.nickname}"</span></h3>
         <p className="barber-bio">{barber.bio}</p>
 
-        <h4>Eng yaxshi ishlar (Vaqtinchalik)</h4>
-        <div className="portfolio-grid">
-          {/* Placeholder for 3 best works */}
-          {[...Array(3)].map((_, index) => (
-            <div key={index} className="portfolio-item">
-              <img src={barber.image_url} alt={`Best work ${index + 1}`} className="portfolio-image" />
+        <h4>Eng yaxshi ishlar</h4>
+        <div className="works-container">
+          {works.map(workIndex => (
+            <div key={workIndex} className="work-row">
+              <div className="portfolio-grid">
+                {angles.map(angleIndex => (
+                  <div key={angleIndex} className="portfolio-item">
+                    <img src={workImage} alt={`Work ${workIndex} - Angle ${angleIndex}`} className="portfolio-image" />
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

@@ -300,11 +300,28 @@ h4 {
   font-size: 1.5em;
 }
 
+.works-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between work rows */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.work-row {
+  padding-bottom: 20px; /* Space below the row */
+  border-bottom: 1px solid #456882; /* Separator line */
+}
+
+.work-row:last-child {
+  border-bottom: none; /* No line for the last work */
+  padding-bottom: 0;
+}
+
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for front, side, back */
   gap: 15px;
-  margin-top: 20px;
   width: 100%;
 }
 
