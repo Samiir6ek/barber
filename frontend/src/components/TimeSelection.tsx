@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // Import default styling
+import WheelPicker from 'react-simple-wheel-picker';
 
 // Define the type for the value from react-calendar
 type ValuePiece = Date | null;
@@ -12,34 +13,35 @@ interface Props {
 
 // Mock available time slots for a given date
 const mockTimeSlots = [
-  { time: '09:00', status: 'Open' },
-  { time: '09:30', status: 'Booked' },
-  { time: '10:00', status: 'Open' },
-  { time: '10:30', status: 'Open' },
-  { time: '11:00', status: 'Booked' },
-  { time: '11:30', status: 'Open' },
-  { time: '14:00', status: 'Open' },
-  { time: '14:30', status: 'Booked' },
-  { time: '15:00', status: 'Open' },
-  { time: '15:30', status: 'Open' },
-  { time: '16:00', status: 'Booked' },
-  { time: '16:30', status: 'Open' }
+  { id: '1', value: '09:00' },
+  { id: '2', value: '09:30' },
+  { id: '3', value: '10:00' },
+  { id: '4', value: '10:30' },
+  { id: '5', value: '11:00' },
+  { id: '6', value: '11:30' },
+  { id: '7', value: '14:00' },
+  { id: '8', value: '14:30' },
+  { id: '9', value: '15:00' },
+  { id: '10', value: '15:30' },
+  { id: '11', value: '16:00' },
+  { id: '12', value: '16:30' }
 ];
 
 const TimeSelection: React.FC<Props> = ({ onSelect }) => {
   const [date, setDate] = useState<CalendarValue>(new Date());
-  const [selectedTime, setSelectedTime] = useState<string>(mockTimeSlots[0].time); // Default to the first open time
+  const [selectedTime, setSelectedTime] = useState(mockTimeSlots[0]);
 
   const handleDateChange = (newDate: CalendarValue) => {
     setDate(newDate);
-    // Reset time selection when date changes, find first available
-    const firstOpenSlot = mockTimeSlots.find(slot => slot.status === 'Open');
-    setSelectedTime(firstOpenSlot ? firstOpenSlot.time : '');
+  };
+
+  const handleTimeChange = (newTime: { id: string, value: string }) => {
+    setSelectedTime(newTime);
   };
 
   const handleConfirmTime = () => {
     if (date instanceof Date && selectedTime) {
-      onSelect(date, selectedTime);
+      onSelect(date, selectedTime.value);
     }
   };
 
@@ -56,18 +58,18 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
         </div>
         <div className="time-slots-container">
           <h3>Mavjud vaqtlar</h3>
-          <div className="roller-container">
-            <div className="roller-selection-indicator"></div>
-            <ul className="roller">
-              {mockTimeSlots.map((slot) => (
-                <li
-                  key={slot.time}
-                  className={`roller-item ${slot.status === 'Booked' ? 'booked' : ''}`}
-                >
-                  {slot.time}
-                </li>
-              ))}
-            </ul>
+          <div className="wheel-picker-container">
+            <WheelPicker
+              data={mockTimeSlots}
+              onChange={handleTimeChange}
+              height={150}
+              width={200}
+              itemHeight={50}
+              selectedID={selectedTime.id}
+              color="#EFECE3"
+              activeColor="#D2C1B6"
+              backgroundColor="#1B3C53"
+            />
           </div>
           <button className="confirm-button" onClick={handleConfirmTime} disabled={!selectedTime}>
             Tanlash
