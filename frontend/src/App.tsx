@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 // Import components
 import ServiceSelection from './components/ServiceSelection';
 import BarberSelection from './components/BarberSelection';
@@ -64,7 +65,7 @@ function App() {
       case 1:
         return <ServiceSelection services={services} onSelect={handleServiceSelect} />;
       case 2:
-        return <BarberSelection barbers={barbers} onSelect={handleViewBarberProfile} />; {/* Changed onSelect to onViewBarberProfile */}
+        return <BarberSelection barbers={barbers} onViewProfile={handleViewBarberProfile} />; {/* Corrected prop name */}
       case 3:
         return selectedBarber && <BarberProfile barber={selectedBarber} onBook={handleBarberSelect} />; {/* New step for BarberProfile */}
       case 4:
