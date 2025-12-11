@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './App.css';
 // Import components
 import ServiceSelection from './components/ServiceSelection';
 import BarberSelection from './components/BarberSelection';
