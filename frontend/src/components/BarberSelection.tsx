@@ -5,23 +5,25 @@ interface Barber {
   name: string;
   nickname: string;
   bio: string;
+  image_url: string; // Added image_url
 }
 
 interface Props {
   barbers: Barber[];
-  onSelect: (barber: Barber) => void;
+  onViewProfile: (barber: Barber) => void; // Changed prop name
 }
 
-const BarberSelection: React.FC<Props> = ({ barbers, onSelect }) => {
+const BarberSelection: React.FC<Props> = ({ barbers, onViewProfile }) => {
   return (
     <div className="selection-container">
       <h2>Step 2: Choose a Barber</h2>
       <div className="card-grid">
         {barbers.map(barber => (
-          <div key={barber.id} className="card" onClick={() => onSelect(barber)}>
+          <div key={barber.id} className="barber-card" onClick={() => onViewProfile(barber)}>
+            <img src={barber.image_url} alt={barber.name} className="barber-image" />
             <h3>{barber.name}</h3>
-            <p><em>"{barber.nickname}"</em></p>
-            <p>{barber.bio}</p>
+            <p className="barber-nickname"><em>"{barber.nickname}"</em></p>
+            <p className="barber-bio-short">{barber.bio.substring(0, 50)}...</p> {/* Short bio preview */}
           </div>
         ))}
       </div>

@@ -1,10 +1,7 @@
-import { useState, useEffect } from 'react';
-// import axios from 'axios';
-import './App.css';
-
 // Import components
 import ServiceSelection from './components/ServiceSelection';
 import BarberSelection from './components/BarberSelection';
+import BarberProfile from './components/BarberProfile'; // Import BarberProfile
 import TimeSelection from './components/TimeSelection';
 import Confirmation from './components/Confirmation';
 import Success from './components/Success';
@@ -21,6 +18,7 @@ export interface Barber {
   name: string;
   nickname: string;
   bio: string;
+  image_url: string; // New field for barber's photo
 }
 
 // --- API Configuration ---
@@ -53,9 +51,9 @@ function App() {
       { id: 3, name: 'Full Service', duration_minutes: 60 },
     ];
     const mockBarbers: Barber[] = [
-      { id: 1, name: 'Alex', nickname: 'The Precisionist', bio: 'Loves clean lines and sharp fades.' },
-      { id: 2, name: 'John', nickname: 'The Classic', bio: 'Specializes in classic cuts and traditional styles.' },
-      { id: 3, name: 'Mike', nickname: 'The Trendsetter', bio: 'Always up to date with the latest styles.' },
+      { id: 1, name: 'Alex', nickname: 'The Precisionist', bio: 'Loves clean lines and sharp fades.', image_url: '/src/assets/images/barber_or_best.jpg' },
+      { id: 2, name: 'John', nickname: 'The Classic', bio: 'Specializes in classic cuts and traditional styles.', image_url: '/src/assets/images/barber_or_best.jpg' },
+      { id: 3, name: 'Mike', nickname: 'The Trendsetter', bio: 'Always up to date with the latest styles.', image_url: '/src/assets/images/barber_or_best.jpg' },
     ];
     setServices(mockServices);
     setBarbers(mockBarbers);
@@ -66,10 +64,12 @@ function App() {
       case 1:
         return <ServiceSelection services={services} onSelect={handleServiceSelect} />;
       case 2:
-        return <BarberSelection barbers={barbers} onSelect={handleBarberSelect} />;
+        return <BarberSelection barbers={barbers} onSelect={handleViewBarberProfile} />; {/* Changed onSelect to onViewBarberProfile */}
       case 3:
-        return <TimeSelection onSelect={handleTimeSelect} />;
+        return selectedBarber && <BarberProfile barber={selectedBarber} onBook={handleBarberSelect} />; {/* New step for BarberProfile */}
       case 4:
+        return <TimeSelection onSelect={handleTimeSelect} />;
+      case 5:
         return <Confirmation 
                   service={selectedService} 
                   barber={selectedBarber} 
@@ -77,7 +77,7 @@ function App() {
                   time={selectedTime}
                   onConfirm={handleConfirm} 
                 />;
-      case 5:
+      case 6:
         return <Success />;
       default:
         return <div>Loading...</div>;
@@ -89,28 +89,38 @@ function App() {
     setStep(2);
   };
 
-  const handleBarberSelect = (barber: Barber) => {
+  const handleViewBarberProfile = (barber: Barber) => { {/* New handler for viewing profile */}
     setSelectedBarber(barber);
-    setStep(3);
+    setStep(3); // Go to BarberProfile step
+  };
+
+  const handleBarberSelect = (barber: Barber) => { {/* Modified handler to proceed to time selection */}
+    setSelectedBarber(barber); // Ensure barber is set if coming from profile
+    setStep(4); // Go to TimeSelection step
   };
   
   const handleTimeSelect = (date: Date, time: string) => {
     setSelectedDate(date);
     setSelectedTime(time);
-    setStep(4);
+    setStep(5);
   };
 
   const handleConfirm = () => {
     // Here we would make the API call to book the appointment
     console.log('Booking confirmed:', { selectedService, selectedBarber, selectedDate, selectedTime });
-    setStep(5);
+    setStep(6);
   };
 
   return (
     <div className="App">
       <header className="App-header">
+        {step > 1 && (
+          <button className="back-button" onClick={() => setStep(step - 1)}>
+            &larr; Back
+          </button>
+        )}
         <h1>Book Your Appointment</h1>
-        <p>Step {step} of 5</p>
+        <p>Step {step} of 6</p> {/* Updated total steps */}
       </header>
       <main>
         {renderStep()}

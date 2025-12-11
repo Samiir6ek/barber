@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 from typing import List, Optional
+import json # Import json module
 
 from app.db.database import get_db
 from app.models.barber import Barber as DBBarber
@@ -17,6 +18,18 @@ class BarberCreate(BaseModel):
     experience_years: Optional[int] = Field(None, ge=0)
     telegram_id: Optional[int] = None # Optional: Link to Telegram user
     subscription_status: Optional[str] = "inactive"
+    portfolio_images: Optional[List[str]] = [] # New field for portfolio images
+
+
+# Pydantic model for updating a barber (input schema for PATCH/PUT)
+class BarberUpdate(BaseModel):
+    name: Optional[str] = Field(None, min_length=1, max_length=100)
+    nickname: Optional[str] = Field(None, max_length=50)
+    bio: Optional[str] = Field(None, max_length=500)
+    experience_years: Optional[int] = Field(None, ge=0)
+    telegram_id: Optional[int] = None
+    subscription_status: Optional[str] = None
+    portfolio_images: Optional[List[str]] = None # Optional for update
 
 
 # Pydantic model for returning a barber (output schema)
@@ -28,6 +41,7 @@ class BarberResponse(BaseModel):
     experience_years: Optional[int]
     telegram_id: Optional[int]
     subscription_status: str
+    portfolio_images: List[str] # New field for portfolio images
 
     class Config:
         from_attributes = True
@@ -47,16 +61,47 @@ def create_barber(
     if db_barber:
         raise HTTPException(status_code=400, detail="Barber with this name already exists")
 
-    new_barber = DBBarber(**barber.model_dump())
-    db.add(new_barber)
-    db.commit()
-    db.refresh(new_barber)
+    # Convert portfolio_images list to JSON string for storage
+    barber_data = barber.model_dump()
+    barber_data["portfolio_images"] = json.dumps(barber_data["portfolio_images"])
+
+    # Convert portfolio_images back to list for response
+    new_barber.portfolio_images = json.loads(new_barber.portfolio_images)
     return new_barber
+
+
+@router.put("/barbers/{barber_id}", response_model=BarberResponse)
+def update_barber(
+    barber_id: int,
+    barber_update: BarberUpdate,
+    db: Session = Depends(get_db),
+    admin_user: DBUser = Depends(get_current_admin_user)
+):
+    db_barber = db.query(DBBarber).filter(DBBarber.id == barber_id).first()
+    if db_barber is None:
+        raise HTTPException(status_code=404, detail="Barber not found")
+
+    update_data = barber_update.model_dump(exclude_unset=True)
+    
+    if "portfolio_images" in update_data and update_data["portfolio_images"] is not None:
+        update_data["portfolio_images"] = json.dumps(update_data["portfolio_images"])
+    
+    for key, value in update_data.items():
+        setattr(db_barber, key, value)
+    
+    db.add(db_barber)
+    db.commit()
+    db.refresh(db_barber)
+    
+    db_barber.portfolio_images = json.loads(db_barber.portfolio_images)
+    return db_barber
 
 
 @router.get("/barbers/", response_model=List[BarberResponse])
 def read_barbers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     barbers = db.query(DBBarber).offset(skip).limit(limit).all()
+    for barber in barbers:
+        barber.portfolio_images = json.loads(barber.portfolio_images)
     return barbers
 
 
@@ -65,6 +110,7 @@ def read_barber(barber_id: int, db: Session = Depends(get_db)):
     db_barber = db.query(DBBarber).filter(DBBarber.id == barber_id).first()
     if db_barber is None:
         raise HTTPException(status_code=404, detail="Barber not found")
+    db_barber.portfolio_images = json.loads(db_barber.portfolio_images)
     return db_barber
 
 

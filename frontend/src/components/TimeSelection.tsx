@@ -12,8 +12,18 @@ interface Props {
 
 // Mock available time slots for a given date
 const mockTimeSlots = [
-  '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-  '14:00', '14:30', '15:00', '15:30', '16:00', '16:30'
+  { time: '09:00', status: 'Open' },
+  { time: '09:30', status: 'Booked' },
+  { time: '10:00', status: 'Open' },
+  { time: '10:30', status: 'Open' },
+  { time: '11:00', status: 'Booked' },
+  { time: '11:30', status: 'Open' },
+  { time: '14:00', status: 'Open' },
+  { time: '14:30', status: 'Booked' },
+  { time: '15:00', status: 'Open' },
+  { time: '15:30', status: 'Open' },
+  { time: '16:00', status: 'Booked' },
+  { time: '16:30', status: 'Open' }
 ];
 
 const TimeSelection: React.FC<Props> = ({ onSelect }) => {
@@ -46,17 +56,20 @@ const TimeSelection: React.FC<Props> = ({ onSelect }) => {
         </div>
         <div className="time-slots-container">
           <h3>Available Times for {date instanceof Date ? date.toLocaleDateString() : ''}</h3>
-          <div className="time-slots-grid">
-            {mockTimeSlots.map(time => (
-              <button
-                key={time}
-                className={`time-slot-button ${selectedTime === time ? 'selected' : ''}`}
-                onClick={() => handleTimeSelect(time)}
-              >
-                {time}
-              </button>
+          <ul className="time-slots-list">
+            {mockTimeSlots.map((slot) => (
+              <li key={slot.time}>
+                <button
+                  className={`time-slot-button ${slot.status === 'Booked' ? 'booked' : 'open'} ${selectedTime === slot.time ? 'selected' : ''}`}
+                  onClick={() => slot.status === 'Open' && handleTimeSelect(slot.time)}
+                  disabled={slot.status === 'Booked'}
+                >
+                  <span className="time-slot-time">{slot.time}</span>
+                  <span className="time-slot-status">{slot.status}</span>
+                </button>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>
