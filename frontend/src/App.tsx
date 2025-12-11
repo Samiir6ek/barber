@@ -24,7 +24,8 @@ export interface Barber {
 }
 
 // --- API Configuration ---
-const API_BASE_URL = 'https://barber-qp73.onrender.com'; // We will replace this later
+// We will use an environment variable for the API URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

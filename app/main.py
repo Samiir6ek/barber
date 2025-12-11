@@ -1,9 +1,23 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.db.database import engine, Base
 from app.models import user, barber, service, appointment  # Import all models
 from app.api.endpoints import users, barbers, services, appointments, reports # Import all routers
 
 app = FastAPI(title="Barber Bot Backend")
+
+# Set up CORS
+origins = [
+    "*"  # Allow all origins for now
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
