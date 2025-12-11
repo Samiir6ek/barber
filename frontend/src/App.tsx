@@ -8,6 +8,10 @@ import TimeSelection from './components/TimeSelection';
 import Confirmation from './components/Confirmation';
 import Success from './components/Success';
 
+// Import images
+import barberImage from '/src/assets/images/barber.jpg';
+import arrowImage from '/src/assets/images/arrow.png';
+
 // --- Mock Data and Types (will be replaced by API calls) ---
 export interface Service {
   id: number;
@@ -53,9 +57,9 @@ function App() {
       { id: 3, name: 'Toʻliq xizmat', duration_minutes: 60 },
     ];
     const mockBarbers: Barber[] = [
-      { id: 1, name: 'Yahyo', nickname: 'the Pro', bio: 'Toza chiziqlar va oʻtkir oʻtishlarni yaxshi koʻradi.', image_url: '/src/assets/images/barber.jpg' },
-      { id: 2, name: 'Shuhrat', nickname: 'Chill guy', bio: 'Klassik soch turmagi va anʼanaviy uslublarga ixtisoslashgan.', image_url: '/src/assets/images/barber.jpg' },
-      { id: 3, name: 'Odil', nickname: 'Trendchi', bio: 'Har doim eng soʻnggi uslublardan xabardor.', image_url: '/src/assets/images/barber.jpg' },
+      { id: 1, name: 'Yahyo', nickname: 'the Pro', bio: 'Toza chiziqlar va oʻtkir oʻtishlarni yaxshi koʻradi.', image_url: barberImage },
+      { id: 2, name: 'Shuhrat', nickname: 'Chill guy', bio: 'Klassik soch turmagi va anʼanaviy uslublarga ixtisoslashgan.', image_url: barberImage },
+      { id: 3, name: 'Odil', nickname: 'Trendchi', bio: 'Har doim eng soʻnggi uslublardan xabardor.', image_url: barberImage },
     ];
     setServices(mockServices);
     setBarbers(mockBarbers);
@@ -118,7 +122,7 @@ function App() {
       <header className="App-header">
         {step > 1 && (
           <button className="back-button" onClick={() => setStep(step - 1)}>
-            <img src="/src/assets/images/arrow.png" alt="orqaga" />
+            <img src={arrowImage} alt="orqaga" />
           </button>
         )}
         <h1>Uchrashuv belgilash</h1>
