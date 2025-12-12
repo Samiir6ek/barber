@@ -1,10 +1,18 @@
 import React from 'react';
-import ConfettiExplosion from 'react-confetti-explosion';
+import ReactConfetti from 'react-confetti';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 const Success: React.FC = () => {
+  const { width, height } = useWindowSize();
   return (
     <>
-      <ConfettiExplosion />
+      <ReactConfetti
+        width={width}
+        height={height}
+        numberOfPieces={200}
+        initialVelocityX={{ min: -10, max: 10 }}
+        initialVelocityY={{ min: -20, max: 5 }}
+      />
       <div className="selection-container">
         <h2>🎉 Muvaffaqiyatli vaqt band qilindi! 🎉</h2>
         <p>Sizning uchrashuvingiz tasdiqlandi.</p>

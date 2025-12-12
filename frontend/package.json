@@ -17,8 +17,9 @@
     "lucide-react": "^0.561.0",
     "react": "^19.2.0",
     "react-calendar": "^6.0.0",
-    "react-confetti-explosion": "^3.0.3",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.2.0",
+    "react-use": "^17.6.0",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "yet-another-react-lightbox": "^3.27.0"
