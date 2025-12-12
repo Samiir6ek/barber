@@ -2,6 +2,7 @@ import React from 'react';
 import ReactConfetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 
+// Success component with confetti effect
 const Success: React.FC = () => {
   const { width, height } = useWindowSize();
   return (
