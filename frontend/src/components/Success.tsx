@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactConfetti from 'react-confetti';
-import useWindowSize from 'react-use/lib/useWindowSize';
 
 // Success component with confetti effect
 const Success: React.FC = () => {
-  const { width, height } = useWindowSize();
   return (
     <>
       <ReactConfetti
-        width={width}
-        height={height}
         numberOfPieces={200}
         initialVelocityX={{ min: -10, max: 10 }}
         initialVelocityY={{ min: -20, max: 5 }}
